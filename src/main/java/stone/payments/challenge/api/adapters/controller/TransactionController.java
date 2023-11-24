@@ -26,7 +26,7 @@ public class TransactionController {
 
     @Transactional
     @PostMapping("/starstore/buy")
-    public ResponseEntity create(@RequestBody @Valid Transaction data) {
+    public ResponseEntity create(@RequestBody @Valid TransactionDTO data) {
             Transaction transaction = transactionBussines.createTransaction(data);
             return ResponseEntity.status(HttpStatus.CREATED).body(transaction);
         }

@@ -24,6 +24,7 @@ public class Client {
         this.name = data.name();
     }
 
+
     public Long getId() {
         return id;
     }

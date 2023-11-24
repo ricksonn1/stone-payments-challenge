@@ -5,8 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import stone.payments.challenge.api.adapters.dto.ClientDTO;
-import stone.payments.challenge.api.adapters.dto.HistoryTransactionsDTO;
 
 import java.time.LocalDate;
 
@@ -33,15 +31,11 @@ public class History {
     @Column(name = "date", insertable = false, updatable = false)
     private LocalDate date;
 
-    public History(Client client, Transaction id) {
+
+    public History(Client client, Transaction transaction) {
         this.client = client;
-        this.transaction = id;
-        this.date = LocalDate.now();
+        this.transaction = transaction;
     }
-
-    public History(Long id, Long id1) {
-    }
-
 
     public Long getId() {
         return id;
