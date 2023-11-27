@@ -6,7 +6,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -29,7 +33,7 @@ public class History {
     private Transaction transaction;
 
     @Column(name = "date", insertable = false, updatable = false)
-    private LocalDate date;
+    private String date;
 
 
     public History(Client client, Transaction transaction) {
@@ -57,12 +61,15 @@ public class History {
         this.transaction = transaction;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public String getDate() throws ParseException {
+        LocalDateTime dateTime = LocalDateTime.parse(this.date, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String formattedDate = dateTime.format(formatter);
+        return formattedDate;
     }
 
     public void setDate(String date) {
-        this.date = LocalDate.parse(date);
+        this.date = date;
     }
 
     public Long getTransaction() {

@@ -67,7 +67,8 @@ public class Transaction {
     }
 
     public String getCardNumber(){
-        return credit_card.getCard_number();
+        String lastFourDigits = this.getCredit_card().getCard_number().substring(this.credit_card.getCard_number().length() - 4);
+        return "**** **** **** " + lastFourDigits ;
     }
     public Long getIdClient(){
         return client.getId();
