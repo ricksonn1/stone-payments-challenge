@@ -1,6 +1,7 @@
 package stone.payments.challenge.api.adapters.controller;
 
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import stone.payments.challenge.api.core.domain.Transaction;
 
 @RestController
 @RequestMapping
+@SecurityRequirement(name = "bearer-key")
 public class TransactionController {
 
     @Autowired
